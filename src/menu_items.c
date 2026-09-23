@@ -693,7 +693,7 @@ char* D_800E7A88[] = {
 char* D_800E7A98 = "MAYBE NEXT TIME!";
 
 char* D_800E7A9C[] = {
-    "CONGRATULATIONS!",
+    "Felicidades!",
     "WHAT A PITY!",
 };
 
