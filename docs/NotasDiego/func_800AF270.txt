@@ -1,0 +1,72 @@
+Esta Funcion se ejecuta cuando va a mostrar la imagen del jugador al final de terminar una copa,
+al momento de la ceremonia y despues de que el pez escupe el trofeo, aparece la imagen del jugador
+apareciendo de derecha al centro de la pantalla
+
+void func_800AF270(MenuItem* arg0)
+    s32 temp_v1;             # 1
+    s32 sp30;
+    s32 temp_v0;
+    Unk_D_800E70A0* thing;   # 2
+
+    temp_v1 = arg0->type - 0x12C;       # 3
+    sp30 = D_802874D8.unk1E;
+    temp_v0 = D_800EFD64[sp30];
+
+# 1: esta variable parece ser una constante que siempre sera 4
+
+# 2: Variable que apunta a una struct almacenado dentro de un array con valores ya cargados
+
+# 3: aqui yo pienso que temp_v1 siempre va a ser 4, debido a que para acceder a esta funcion el valor de arg0->type 
+     debe ser de 0x130, aqui temp_v1 guarda el resultado de (0x130 - 0x12C) que es igual a 4, aqui es la unica linea
+     donde temp_v1 modifica su valor 
+**********************************************************************************************************************
+
+Despues de asignar valor a la variables pasa a comprobar un switch. Como nota quiero dejar claro que esta funcion
+    se ejecuta repetidamente hasta que cambies de scena, esto lo menciono para dar contexto de lo que sucedera
+
+    switch (arg0->state)
+        case 0:                                 # 1
+            thing = &D_800E7458[temp_v1];       
+            arg0->column = thing->column;
+            arg0->row = thing->row;
+            arg0->state = 1;
+            break;
+
+# 1: la primera vez que se ejecuta esta funcion arg0->state es 0 pro ender siempre se ejecutara primero este caso
+
+Aqui vemos como es que thing optiene la direccion a la estructura almacenada en el array D_800E7458, como mencionamos
+temp_v1 es igual a 4 siempre, asi que temp_v1 referencia a los valores en el 5to elemento de D_800E7458
+
+Unk_D_800E70A0 D_800E7458[] = {
+    { 0x14a, 0x32, 0x00, 0x00 },  { 0xff60, 0xd4, 0x00, 0x00 }, { 0xa0, 0x10e, 0x00, 0x00 },
+    { 0xff60, 0xbe, 0x00, 0x00 }, { 0x143, 0x5a, 0x00, 0x00 },
+};
+
+luego vemos que arg0-> column y row adquieren el valor del primer y segundo elemento de thing
+    Como extra arg0->column y row representan la posicion x, y De la imagen del jugador que aparece durante esta scena
+    quiza para que sea mas entendible deberian llamarse posX y posY.
+    En pocas palabras, en esta caso solo establece la posicion inicial de la imagen del jugador,
+    despues de eso da a arg0->state el valor de 1 (es para ejecutar el segundo caso)
+
+typedef struct {
+    /* 0x00 */ s16 column;
+    /* 0x02 */ s16 row;
+    /* 0x04 */ s16 pad0;
+    /* 0x06 */ s16 pad1;
+} Unk_D_800E70A0; // size = 0x08
+**********************************************************************************************************************
+
+        case 1:
+            thing = &D_800E7480[temp_v1];
+            func_800A91D8(arg0, thing->column, thing->row);
+            if ((arg0->column == thing->column) && (arg0->row == thing->row)) {
+                arg0->state = 2;
+                arg0->param2 = 0;
+            }
+            break;
+
+Unk_D_800E70A0 D_800E7480[] = {
+    { 0xa0, 0x32, 0x00, 0x00 }, { 0x9b, 0xd4, 0x00, 0x00 }, { 0xa0, 0x50, 0x00, 0x00 },
+    { 0x9b, 0xbe, 0x00, 0x00 }, { 0x80, 0x5a, 0x00, 0x00 },
+    
+
