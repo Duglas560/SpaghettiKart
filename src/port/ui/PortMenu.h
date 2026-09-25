@@ -75,6 +75,7 @@ class PortMenu : public Ship::Menu {
       void AddRulesets();
     void AddDevTools();
       void AddSceneVisibility();
+    void AddModMenu();
 };
 } // namespace BenGui
 

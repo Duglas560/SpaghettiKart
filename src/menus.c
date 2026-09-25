@@ -7,6 +7,7 @@
 #include <stubs.h>
 
 #include "menus.h"
+#include "menu_items.h"
 #include "engine/TrackBrowser.h"
 #include "engine/editor/Editor.h"
 #include "main.h"
@@ -1767,12 +1768,14 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
             case SUB_MENU_MAP_SELECT_CUP:
                 if ((btnAndStick & R_JPAD) != 0) {
                     sTempCupSelection = WorldNextCup();
+                    gCupPage = sTempCupSelection / 4; // cuando estas en index 3 y precionas derecha, cambia a la pagina 2 y entra en el index que es la pos 0 de esa pagina
                     //++gCupSelection;
                     // reset_cycle_flash_menu();
                     // play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 if (((btnAndStick & L_JPAD) != 0)) {
                     sTempCupSelection = WorldPreviousCup();
+                    gCupPage = sTempCupSelection / 4;
                     //--gCupSelection;
                     // reset_cycle_flash_menu();
                     // play_sound2(SOUND_MENU_CURSOR_MOVE);

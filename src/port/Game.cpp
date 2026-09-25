@@ -67,6 +67,7 @@ std::unique_ptr<Cup> gMushroomCup;
 std::unique_ptr<Cup> gFlowerCup;
 std::unique_ptr<Cup> gStarCup;
 std::unique_ptr<Cup> gSpecialCup;
+std::unique_ptr<Cup> gCustomCup;
 std::unique_ptr<Cup> gBattleCup;
 
 HarbourMastersIntro gMenuIntro;
@@ -129,6 +130,13 @@ void CustomEngineInit() {
         "mk:rainbow_road"
     });
 
+    gCustomCup = std::make_unique<Cup>("mk:custom_cup", "Custom Cup", std::vector<std::string>{
+    "hm:harbour",
+    "mk:mario_raceway",
+    "mk:rainbow_road",
+    "mk:koopa_troopa_beach"
+    });
+
     gBattleCup = std::make_unique<Cup>("mk:battle_cup", "Battle Cup", std::vector<std::string>{
         "mk:big_donut", 
         "mk:block_fort", 
@@ -141,6 +149,7 @@ void CustomEngineInit() {
     gFlowerCup->ValidateTrackIds(gTrackRegistry);
     gStarCup->ValidateTrackIds(gTrackRegistry);
     gSpecialCup->ValidateTrackIds(gTrackRegistry);
+    gCustomCup->ValidateTrackIds(gTrackRegistry);
     gBattleCup->ValidateTrackIds(gTrackRegistry);
 
     /* Instantiate Cups */
@@ -148,6 +157,7 @@ void CustomEngineInit() {
     GetWorld()->AddCup(gFlowerCup.get());
     GetWorld()->AddCup(gStarCup.get());
     GetWorld()->AddCup(gSpecialCup.get());
+    GetWorld()->AddCup(gCustomCup.get());
     GetWorld()->AddCup(gBattleCup.get());
 
     SetMarioRaceway();
@@ -166,6 +176,7 @@ void CustomEngineDestroy() {
     gFlowerCup.reset();
     gStarCup.reset();
     gSpecialCup.reset();
+    gCustomCup.reset();
     gBattleCup.reset();
 }
 

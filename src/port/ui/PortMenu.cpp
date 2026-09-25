@@ -357,6 +357,12 @@ void PortMenu::AddSettings() {
 }
 int32_t motionBlurStrength;
 
+void PortMenu::AddModMenu(){
+    AddMenuEntry("Mod", "gSettings.Menu.ModSidebarSection");
+    WidgetPath path = { "Mod", "General", SECTION_COLUMN_1 };
+
+}
+
 void PortMenu::AddEnhancements() {
     AddMenuEntry("Enhancements", "gSettings.Menu.EnhancementsSidebarSection");
     WidgetPath path = { "Enhancements", "General", SECTION_COLUMN_1 };

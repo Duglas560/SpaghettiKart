@@ -63,6 +63,11 @@ u8* sTKMK00_LowResBuffer;
 u8* sGPPointsCopy;
 void* gSomeDLBuffer;
 
+/*********************MOD**********************/
+
+// Variable que guarda el index actual de la pagina activa
+u8 gCupPage;
+
 /**
  * List of bytes indexed by character ID
  * Indicates number of Grand Prix points that character
@@ -6646,9 +6651,11 @@ void render_menus(MenuItem* arg0) {
             case COURSE_SELECT_FLOWER_CUP:
             case COURSE_SELECT_STAR_CUP:
             case COURSE_SELECT_SPECIAL_CUP:
-                var_a1 = arg0->type - COURSE_SELECT_MUSHROOM_CUP;
-                func_800A890C(var_a1, arg0);
-                func_800A143C(arg0, var_a1);
+                var_a1 = (arg0->type - COURSE_SELECT_MUSHROOM_CUP) + (gCupPage * 4);
+                if (var_a1 < GetCupIndex()) { 
+                    func_800A890C(var_a1, arg0);
+                    func_800A143C(arg0, var_a1);
+                }
                 break;
             case COURSE_SELECT_OK:
                 func_800A8564(arg0);

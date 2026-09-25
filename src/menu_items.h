@@ -656,6 +656,11 @@ void rmonPrintf(const char*, ...);
 #define D_8018E810_SIZE 0x05
 #define MENU_TEXTURE_BUFFER_MAX 500
 
+/*--------------------MOD----------------------*/
+
+extern u8 gCupPage;
+
+
 /* This is where I'd put my static data, if I had any */
 
 extern s32 D_800DDB24;
