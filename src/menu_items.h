@@ -821,6 +821,7 @@ extern MenuTexture* D_800E8274[];
 extern MenuTexture* D_800E8294[];
 extern MenuTexture* gMenuTexturesBorderPlayer[];
 extern MenuTexture* gMenuTexturesTrackSelection[];
+extern MenuTexture* gMenuTexturesTrackSelection[];
 extern MenuTexture* D_800E82F4[];
 extern MkAnimation* D_800E8320[];
 extern MkAnimation* D_800E8340[];

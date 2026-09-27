@@ -528,6 +528,8 @@ extern MenuTexture seg2_mushroom_cup_texture[2];
 extern MenuTexture seg2_flower_cup_texture[2];
 extern MenuTexture seg2_star_cup_texture[2];
 extern MenuTexture seg2_special_cup_texture[2];
+extern MenuTexture CustomCup1_Icon[2];
+extern MenuTexture WIP_Icon[2];
 extern MenuTexture seg2_mario_raceway_preview_small_texture[2];
 extern MenuTexture seg2_mushroom_cup_title_texture[5];
 extern MenuTexture seg2_flower_cup_title_texture[5];

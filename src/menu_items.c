@@ -152,11 +152,11 @@ Unk_D_800E70A0 D_800E7148[] = {
     { 0xe8, 0x3b, 0x00, 0x00 },
 };
 
-Unk_D_800E70A0 D_800E7168[] = {
-    { 0x17, 0x70, 0x00, 0x00 },
-    { 0x57, 0x70, 0x00, 0x00 },
-    { 0x17, 0x97, 0x00, 0x00 },
-    { 0x57, 0x97, 0x00, 0x00 },
+Unk_D_800E70A0 D_800E7168[] = {         // posiciones de cuadros chicos de mapas de copas
+    { 0x17, 0x70, 0x00, 0x00 },         // track 1
+    { 0x57, 0x70, 0x00, 0x00 },         // track 2
+    { 0x17, 0x97, 0x00, 0x00 },         // track 3
+    { 0x57, 0x97, 0x00, 0x00 },         // track 4
 };
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E7188[][4]`
@@ -1108,10 +1108,15 @@ MenuTexture* gMenuTexturesBorderPlayer[] = {
 };
 
 MenuTexture* gMenuTexturesTrackSelection[] = {
-    seg2_menu_select_texture,        seg2_mushroom_cup_texture,     seg2_flower_cup_texture,
-    seg2_star_cup_texture,           seg2_special_cup_texture,      seg2_mario_raceway_preview_small_texture,
-    seg2_mushroom_cup_title_texture, seg2_flower_cup_title_texture, seg2_star_cup_title_texture,
-    seg2_special_cup_title_texture,  seg2_battle_title_texture,     D_02004E80,
+    seg2_menu_select_texture,                 CustomCup1_Icon,        seg2_mushroom_cup_texture,
+    seg2_mushroom_cup_texture,                    seg2_mushroom_cup_texture,         
+    seg2_mario_raceway_preview_small_texture, seg2_mushroom_cup_title_texture,  seg2_flower_cup_title_texture, 
+    seg2_star_cup_title_texture,             seg2_special_cup_title_texture,  seg2_battle_title_texture,     
+    D_02004E80,
+};
+
+MenuTexture* gMenuTexturesCustomTrackSelection[] = {
+    CustomCup1_Icon, WIP_Icon,
 };
 
 MenuTexture* D_800E82F4[] = {
@@ -6635,7 +6640,7 @@ void render_menus(MenuItem* arg0) {
                     arg0->column, arg0->row);
                 func_800A8CA4(arg0);
                 break;
-            case COURSE_SELECT_MAP_SELECT:
+            case COURSE_SELECT_MAP_SELECT:                  // Se encarga del renderizado del banner de course select
                 gDisplayListHead = render_menu_textures(
                     gDisplayListHead,
                      gMenuTexturesTrackSelection[arg0->type - COURSE_SELECT_MAP_SELECT],
@@ -6647,15 +6652,14 @@ void render_menus(MenuItem* arg0) {
             case MENU_ITEM_TYPE_062:
                 func_800A1500(arg0);
                 break;
-            case COURSE_SELECT_MUSHROOM_CUP:
-            case COURSE_SELECT_FLOWER_CUP:
-            case COURSE_SELECT_STAR_CUP:
-            case COURSE_SELECT_SPECIAL_CUP:
-                var_a1 = (arg0->type - COURSE_SELECT_MUSHROOM_CUP) + (gCupPage * 4);
-                if (var_a1 < GetCupIndex()) { 
-                    func_800A890C(var_a1, arg0);
-                    func_800A143C(arg0, var_a1);
-                }
+            case COURSE_SELECT_MUSHROOM_CUP:    //-----------------------------------------
+            case COURSE_SELECT_FLOWER_CUP:      //  Estos 4 casos se encargan de dibujar los iconos de las copas 
+            case COURSE_SELECT_STAR_CUP:        //
+            case COURSE_SELECT_SPECIAL_CUP:     //----------------------------------------
+                var_a1 = (arg0->type - COURSE_SELECT_MUSHROOM_CUP) + (gCupPage * 4); 
+                func_800A890C(var_a1, arg0);
+                func_800A143C(arg0, var_a1);
+                
                 break;
             case COURSE_SELECT_OK:
                 func_800A8564(arg0);
@@ -7184,7 +7188,7 @@ void func_800A1500(MenuItem* arg0) {
             break;
     }
     switch (var_a1) {
-        case 0:
+        case 0:         // Posiciona la textura preview unica del mapa en una posicion espesifica
             func_8009A76C(arg0->D_8018DEE0_index, 0x00000017, 0x00000070, -1);
             break;
         case 1:

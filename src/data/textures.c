@@ -7,6 +7,7 @@
 #include <assets/textures/texture_tkmk00.h>
 #include <assets/textures/texture_data_2.h>
 #include <assets/textures/player_selection.h>
+#include <assets/textures/CustomCourseSelect.h>
 #include "textures.h"
 
 /**
@@ -4492,6 +4493,16 @@ MenuTexture seg2_star_cup_texture[2] = {
  */
 MenuTexture seg2_special_cup_texture[2] = {
     { 1, gTextureMenuSpecialCup, 65, 40, 0, 0, 0x0 },
+    { 0, NULL, 0, 0, 0, 0, 0 },
+};
+
+MenuTexture CustomCup1_Icon[2] = {
+    { 1, gTextureMenuCustomCup, 65, 40, 0, 0, 0x0 },
+    { 0, NULL, 0, 0, 0, 0, 0 },
+};
+
+MenuTexture WIP_Icon[2] = {
+    { 1, gTextureMenuWIPCup, 65, 40, 0, 0, 0x0 },
     { 0, NULL, 0, 0, 0, 0, 0 },
 };
 
