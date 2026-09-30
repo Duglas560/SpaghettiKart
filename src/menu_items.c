@@ -1108,15 +1108,16 @@ MenuTexture* gMenuTexturesBorderPlayer[] = {
 };
 
 MenuTexture* gMenuTexturesTrackSelection[] = {
-    seg2_menu_select_texture,                 CustomCup1_Icon,        seg2_mushroom_cup_texture,
-    seg2_mushroom_cup_texture,                    seg2_mushroom_cup_texture,         
-    seg2_mario_raceway_preview_small_texture, seg2_mushroom_cup_title_texture,  seg2_flower_cup_title_texture, 
-    seg2_star_cup_title_texture,             seg2_special_cup_title_texture,  seg2_battle_title_texture,     
+    seg2_menu_select_texture,
+    seg2_mushroom_cup_texture, seg2_flower_cup_texture, seg2_star_cup_texture, seg2_special_cup_texture,         
+    seg2_mario_raceway_preview_small_texture, 
+    seg2_mushroom_cup_title_texture, seg2_flower_cup_title_texture, seg2_star_cup_title_texture, seg2_special_cup_title_texture,  
+    seg2_battle_title_texture,     
     D_02004E80,
 };
 
-MenuTexture* gMenuTexturesCustomTrackSelection[] = {
-    CustomCup1_Icon, WIP_Icon,
+MenuTexture* gMenuTexturesTrackSelection2[] = {
+    WIP_Icon, WIP_Icon, WIP_Icon, WIP_Icon,
 };
 
 MenuTexture* D_800E82F4[] = {
@@ -6658,7 +6659,7 @@ void render_menus(MenuItem* arg0) {
             case COURSE_SELECT_SPECIAL_CUP:     //----------------------------------------
                 var_a1 = (arg0->type - COURSE_SELECT_MUSHROOM_CUP) + (gCupPage * 4); 
                 func_800A890C(var_a1, arg0);
-                func_800A143C(arg0, var_a1);
+                func_800A143C(arg0, var_a1, gCupPage);
                 
                 break;
             case COURSE_SELECT_OK:
@@ -6705,7 +6706,7 @@ void render_menus(MenuItem* arg0) {
             case MENU_ITEM_TYPE_07B:
                 var_a1 = arg0->type - MENU_ITEM_TYPE_078;
                 func_800A90D4(var_a1, arg0);
-                func_800A143C(arg0, var_a1);
+                func_800A143C(arg0, var_a1, 0);
                 break;
             case MENU_ITEM_TYPE_08C:
                 if ((gMainMenuSelection >= MAIN_MENU_MODE_SUB_SELECT) && (var_a1 == (arg0->type - var_v1))) {
@@ -7151,17 +7152,26 @@ void func_800A1350(MenuItem* arg0) {
     }
 }
 
-void func_800A143C(MenuItem* arg0, s32 arg1) {
+void func_800A143C(MenuItem* arg0, s32 arg1, int currPage) {
+    MenuTexture** CupIcon = gMenuTexturesTrackSelection;
+    int offset = 1;
+
+    if(currPage != 0){
+        CupIcon = gMenuTexturesTrackSelection2;
+        offset = 0;
+        arg1 -= (currPage * 4);
+    }
+    
     switch (arg0->state) {
         case 0:
         case 2:
         case 3:
-            gDisplayListHead = render_menu_textures_alt(gDisplayListHead, gMenuTexturesTrackSelection[arg1 + 1],
+            gDisplayListHead = render_menu_textures_alt(gDisplayListHead, CupIcon[arg1 + offset],
                                                         arg0->column, arg0->row);
             break;
         case 1:
         case 4:
-            gDisplayListHead = func_8009BC9C(gDisplayListHead, gMenuTexturesTrackSelection[arg1 + 1], arg0->column,
+            gDisplayListHead = func_8009BC9C(gDisplayListHead, CupIcon[arg1 + offset], arg0->column,
                                              arg0->row, 2, arg0->param1);
             break;
     }
@@ -10867,16 +10877,17 @@ void func_800AB020(MenuItem* arg0) {
 }
 
 void func_800AB098(MenuItem* arg0) {
+    s32 SelectedSlot = GetCupIndex() % 4;
     switch (arg0->state) {
         case 0:
-            if (((s32) GetCupIndex() + 0x53) == arg0->type) {
+            if ((SelectedSlot + 0x53) == arg0->type) {
                 arg0->state = 2;
             } else {
                 arg0->state = 1;
             }
             break;
         case 4:
-            if (((s32) GetCupIndex() + 0x53) == arg0->type) {
+            if ((SelectedSlot + 0x53) == arg0->type) {
                 arg0->state = 2;
                 arg0->param1 = 0;
                 break;
@@ -10893,7 +10904,7 @@ void func_800AB098(MenuItem* arg0) {
             }
             break;
         case 3:
-            if (((s32) GetCupIndex() + 0x53) == arg0->type) {
+            if ((SelectedSlot + 0x53) == arg0->type) {
                 arg0->state = 2;
             }
             break;
@@ -10905,8 +10916,8 @@ void func_800AB098(MenuItem* arg0) {
 
 void func_800AB164(MenuItem* arg0) {
     Unk_D_800E70A0* thing = &D_800E7148[arg0->type - 0x53];
-
-    if (((s32) GetCupIndex() + 0x53) == arg0->type) {
+    s32 SelectedSlot = GetCupIndex() % 4;
+    if ((SelectedSlot + 0x53) == arg0->type) {
         arg0->priority = 0x0A;
     } else {
         arg0->priority = 4;

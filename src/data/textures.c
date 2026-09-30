@@ -4465,7 +4465,7 @@ MenuTexture seg2_menu_select_texture[2] = {
  *
  */
 MenuTexture seg2_mushroom_cup_texture[2] = {
-    { 1, gTextureMenuMushroomCup, 65, 40, 0, 0, 0x0 },
+    { 1, gTextureMenuCustomMenuMushroomCup, 65, 40, 0, 0, 0x0 },
     { 0, NULL, 0, 0, 0, 0, 0 },
 };
 
@@ -4474,7 +4474,7 @@ MenuTexture seg2_mushroom_cup_texture[2] = {
  *
  */
 MenuTexture seg2_flower_cup_texture[2] = {
-    { 1, gTextureMenuFlowerCup, 65, 40, 0, 0, 0x0 },
+    { 1, gTextureMenuCustomMenuFlowerCup, 65, 40, 0, 0, 0x0 },
     { 0, NULL, 0, 0, 0, 0, 0 },
 };
 
@@ -4483,7 +4483,7 @@ MenuTexture seg2_flower_cup_texture[2] = {
  *
  */
 MenuTexture seg2_star_cup_texture[2] = {
-    { 1, gTextureMenuStarCup, 65, 40, 0, 0, 0x0 },
+    { 1, gTextureMenuCustomMenuStarCup, 65, 40, 0, 0, 0x0 },
     { 0, NULL, 0, 0, 0, 0, 0 },
 };
 
@@ -4492,12 +4492,7 @@ MenuTexture seg2_star_cup_texture[2] = {
  *
  */
 MenuTexture seg2_special_cup_texture[2] = {
-    { 1, gTextureMenuSpecialCup, 65, 40, 0, 0, 0x0 },
-    { 0, NULL, 0, 0, 0, 0, 0 },
-};
-
-MenuTexture CustomCup1_Icon[2] = {
-    { 1, gTextureMenuCustomCup, 65, 40, 0, 0, 0x0 },
+    { 1, gTextureMenuCustomMenuSpecialCup, 65, 40, 0, 0, 0x0 },
     { 0, NULL, 0, 0, 0, 0, 0 },
 };
 
