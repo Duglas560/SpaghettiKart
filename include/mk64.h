@@ -53,6 +53,10 @@ typedef enum {
     /* 0x12 */ TRACK_DK_JUNGLE,
     /* 0x13 */ TRACK_BIG_DONUT,
     /* 0x14 */ TRACK_AWARD_CEREMONY,
+    /*      */ TRACK_HARBOUR,
+    /*      */ TRACK_CUSTOM2,
+    /*      */ TRACK_CUSTOM3,
+    /*      */ TRACK_CUSTOM4,
     /* 0x15 */ NUM_TRACKS
 } TRACKS;
 

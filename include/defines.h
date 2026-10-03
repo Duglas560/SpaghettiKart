@@ -178,7 +178,7 @@ enum PlayerId {
  * the battle courses could be displayed in the same
  * way race courses are.
  */
-enum { MUSHROOM_CUP, FLOWER_CUP, STAR_CUP, SPECIAL_CUP, BATTLE_CUP, NUM_CUPS };
+enum { MUSHROOM_CUP, FLOWER_CUP, STAR_CUP, SPECIAL_CUP, CUSTOM_CUP, BATTLE_CUP, NUM_CUPS };
 
 #define NUM_COURSES_PER_CUP 4
 

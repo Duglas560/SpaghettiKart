@@ -1742,6 +1742,26 @@ MenuTexture D_02001E24[2] = {
     { 0, NULL, 0, 0, 0, 0, 0 },
 };
 
+MenuTexture MTtrackpreview_Placeholder1[2] = {
+    { 0, gTextureMenuWIPMapPreview, 128, 78, 0, 0, 0x2f5c},
+    { 0, NULL, 0, 0, 0, 0, 0 },
+};
+
+MenuTexture MTtrackpreview_Placeholder2[2] = {
+    { 0, gTextureMenuWIPMapPreview, 128, 78, 0, 0, 0x2f5c},
+    { 0, NULL, 0, 0, 0, 0, 0 },
+};
+
+MenuTexture MTtrackpreview_Placeholder3[2] = {
+    { 0, gTextureMenuWIPMapPreview, 128, 78, 0, 0, 0x2f5c},
+    { 0, NULL, 0, 0, 0, 0, 0 },
+};
+
+MenuTexture MTtrackpreview_Placeholder4[2] = {
+    { 0, gTextureMenuWIPMapPreview, 128, 78, 0, 0, 0x2f5c},
+    { 0, NULL, 0, 0, 0, 0, 0 },
+};
+
 /**
  * @brief unknown MkAnimation
  *
@@ -1925,6 +1945,26 @@ MkAnimation D_02001F84[2] = {
  */
 MkAnimation D_02001F94[2] = {
     { D_02001E24, 0x0000003c },
+    { NULL, 0x00000000 },
+};
+
+MkAnimation MKATrackPrev_Placeholder1[2] = {
+    { MTtrackpreview_Placeholder1, 0x0000003c },
+    { NULL, 0x00000000 },
+};
+
+MkAnimation MKATrackPrev_Placeholder2[2] = {
+    { MTtrackpreview_Placeholder2, 0x0000003c },
+    { NULL, 0x00000000 },
+};
+
+MkAnimation MKATrackPrev_Placeholder3[2] = {
+    { MTtrackpreview_Placeholder3, 0x0000003c },
+    { NULL, 0x00000000 },
+};
+
+MkAnimation MKATrackPrev_Placeholder4[2] = {
+    { MTtrackpreview_Placeholder4, 0x0000003c },
     { NULL, 0x00000000 },
 };
 

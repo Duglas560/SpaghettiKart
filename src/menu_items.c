@@ -817,10 +817,12 @@ MkAnimation* D_800E7E14[] = {
     D_020020BC, D_020020CC, D_020020DC, D_020020DC, D_020020EC, D_020020FC, D_0200210C, D_0200210C,
 };
 
+// TrackPreview MkAnimation
 MkAnimation* D_800E7E34[] = {
     D_02001E64, D_02001E74, D_02001E84, D_02001E94, D_02001EA4, D_02001EB4, D_02001EC4,
     D_02001ED4, D_02001EE4, D_02001EF4, D_02001F04, D_02001F14, D_02001F24, D_02001F34,
-    D_02001F44, D_02001F54, D_02001F64, D_02001F74, D_02001F84, D_02001F94,
+    D_02001F44, D_02001F54, D_02001F64, D_02001F74, D_02001F84, D_02001F94, 0,
+    MKATrackPrev_Placeholder1, MKATrackPrev_Placeholder2, MKATrackPrev_Placeholder3, MKATrackPrev_Placeholder4,
 };
 
 MenuTexture* gGlyphTextureLUT[] = {
@@ -6659,7 +6661,7 @@ void render_menus(MenuItem* arg0) {
             case COURSE_SELECT_SPECIAL_CUP:     //----------------------------------------
                 var_a1 = (arg0->type - COURSE_SELECT_MUSHROOM_CUP) + (gCupPage * 4); 
                 func_800A890C(var_a1, arg0);
-                func_800A143C(arg0, var_a1, gCupPage);
+                func_800A143C(arg0, var_a1);
                 
                 break;
             case COURSE_SELECT_OK:
@@ -6706,7 +6708,7 @@ void render_menus(MenuItem* arg0) {
             case MENU_ITEM_TYPE_07B:
                 var_a1 = arg0->type - MENU_ITEM_TYPE_078;
                 func_800A90D4(var_a1, arg0);
-                func_800A143C(arg0, var_a1, 0);
+                func_800A143C(arg0, var_a1);
                 break;
             case MENU_ITEM_TYPE_08C:
                 if ((gMainMenuSelection >= MAIN_MENU_MODE_SUB_SELECT) && (var_a1 == (arg0->type - var_v1))) {
@@ -7152,14 +7154,14 @@ void func_800A1350(MenuItem* arg0) {
     }
 }
 
-void func_800A143C(MenuItem* arg0, s32 arg1, int currPage) {
+void func_800A143C(MenuItem* arg0, s32 arg1) {
     MenuTexture** CupIcon = gMenuTexturesTrackSelection;
     int offset = 1;
 
-    if(currPage != 0){
+    if(gCupPage != 0){
         CupIcon = gMenuTexturesTrackSelection2;
         offset = 0;
-        arg1 -= (currPage * 4);
+        arg1 -= (gCupPage * 4);
     }
     
     switch (arg0->state) {

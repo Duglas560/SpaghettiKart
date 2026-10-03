@@ -135,7 +135,7 @@ const s8 sCharacterGridOrder[] = {
     MARIO, LUIGI, PEACH, TOAD, YOSHI, DK, WARIO, BOWSER,
 };
 
-const s16 gCupCourseOrder[5][4] = {
+const s16 gCupCourseOrder[6][4] = {
     // mushroom cup
     { TRACK_LUIGI_RACEWAY, TRACK_MOO_MOO_FARM, TRACK_KOOPA_BEACH, TRACK_KALIMARI_DESERT },
     // flower cup
@@ -144,6 +144,8 @@ const s16 gCupCourseOrder[5][4] = {
     { TRACK_WARIO_STADIUM, TRACK_SHERBET_LAND, TRACK_ROYAL_RACEWAY, TRACK_BOWSER_CASTLE },
     // special cup
     { TRACK_DK_JUNGLE, TRACK_YOSHI_VALLEY, TRACK_BANSHEE_BOARDWALK, TRACK_RAINBOW_ROAD },
+    // Custom cup
+    { TRACK_HARBOUR, TRACK_CUSTOM2, TRACK_CUSTOM3, TRACK_CUSTOM4},
     // battle mode
     { TRACK_BIG_DONUT, TRACK_BLOCK_FORT, TRACK_DOUBLE_DECK, TRACK_SKYSCRAPER },
 };

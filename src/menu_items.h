@@ -505,7 +505,7 @@ void func_800A10CC(MenuItem*);
 void render_cursor_player(MenuItem*, s32, s32);
 void func_800A12BC(MenuItem*, MenuTexture*);
 void func_800A1350(MenuItem*);
-void func_800A143C(MenuItem*, s32, int);
+void func_800A143C(MenuItem*, s32);
 void func_800A1500(MenuItem*);
 void func_800A15EC(MenuItem*);
 void func_800A1780(MenuItem*);
